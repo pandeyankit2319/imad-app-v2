@@ -11,7 +11,11 @@ date: 'Sept 5,2016',
 content: `<p>this is article one.</p>`
 };
 
-
+function createTemplate (data) {
+    var title = data.title;
+    var heading = data.heading;
+    var content = data.content;
+}
 var htmlTemplate =
 `   <html>
     <head>
@@ -40,9 +44,9 @@ ${date}
 </div>
 </body>
 </html>`;
-
+return htmlTemplate;
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+  res.send(createTemplate(ArticleOne));
 });
 
 app.get('/Article-one',function (req, res){
