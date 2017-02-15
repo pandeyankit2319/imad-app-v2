@@ -15,7 +15,7 @@ function createTemplate (data) {
     var title = data.title;
     var heading = data.heading;
     var content = data.content;
-}
+    
 var htmlTemplate =
 `   <html>
     <head>
@@ -43,14 +43,18 @@ ${date}
 </div>
 </div>
 </body>
-</html>`;
-return htmlTemplate;
-app.get('/', function (req, res) {
-  res.send(createTemplate(ArticleOne));
+</html>
+`;
+  return htmlTemplate;
+
+}
+
+ app.get('/',function (req, res){
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/Article-one',function (req, res){
-    res.sendFile(path.join(__dirname, 'ui', 'Article-one.html'));
+    res.send(createTemplate(ArticleOne));
 });
 
 app.get('/Article-2',function (req, res){
